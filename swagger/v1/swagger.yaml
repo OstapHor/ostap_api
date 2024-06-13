@@ -1,0 +1,112 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/users":
+    get:
+      summary: Список користувачів
+      responses:
+        '200':
+          description: Успішно
+    post:
+      summary: Створити користувача
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                rating:
+                  type: integer
+      responses:
+        '200':
+          description: Успішно
+
+  "/users/new":
+    get:
+      summary: Новий користувач
+      responses:
+        '200':
+          description: Успішно
+
+  "/users/{id}/edit":
+    parameters:
+      - name: id
+        in: path
+        description: ID користувача
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Редагувати користувача
+      responses:
+        '200':
+          description: Успішно
+
+  "/users/{id}":
+    parameters:
+      - name: id
+        in: path
+        description: ID користувача
+        required: true
+        schema:
+          type: string
+    get:
+      summary: Показати користувача
+      responses:
+        '200':
+          description: Успішно
+    patch:
+      summary: Оновити користувача
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                rating:
+                  type: integer
+      responses:
+        '200':
+          description: Успішно
+    put:
+      summary: Оновити користувача
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                rating:
+                  type: integer
+      responses:
+        '200':
+          description: Успішно
+    delete:
+      summary: Видалити користувача
+      responses:
+        '200':
+          description: Успішно
+
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: 127.0.0.1:3000
