@@ -1,7 +1,7 @@
-ActiveAdmin.register User do
+ActiveAdmin.register Realtor do
 
   permit_params do
-    permitted = [:email, :password, :rating]
+    permitted = [:username, :email, :rating, :contactinfo]
     permitted << :other if params[:action] == 'create' && current_user.admin?
     permitted
   end

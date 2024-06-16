@@ -6,6 +6,9 @@ class Rating < ApplicationRecord
      "neighborhood_rating", "property_id", "realtor_id", 
      "security_rating", "updated_at", "user_id"]
   end
+  def self.ransackable_associations(auth_object = nil)
+    ["property", "realtor", "user"]
+  end
 
   belongs_to :user
   belongs_to :property

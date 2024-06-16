@@ -1,16 +1,30 @@
----
 openapi: 3.0.1
 info:
   title: API V1
   version: v1
+tags:
+  - name: Users
+    description: Операції з користувачами
+  - name: Realtors
+    description: Операції з рієлторами
+  - name: Properties
+    description: Операції з нерухомістю
+  - name: Contracts
+    description: Операції з контрактами
+  - name: Ratings
+    description: Операції з рейтингами
 paths:
   "/users":
     get:
+      tags:
+        - Users
       summary: Список користувачів
       responses:
         '200':
           description: Успішно
     post:
+      tags:
+        - Users
       summary: Створити користувача
       requestBody:
         required: true
@@ -29,26 +43,6 @@ paths:
         '200':
           description: Успішно
 
-  "/users/new":
-    get:
-      summary: Новий користувач
-      responses:
-        '200':
-          description: Успішно
-
-  "/users/{id}/edit":
-    parameters:
-      - name: id
-        in: path
-        description: ID користувача
-        required: true
-        schema:
-          type: string
-    get:
-      summary: Редагувати користувача
-      responses:
-        '200':
-          description: Успішно
 
   "/users/{id}":
     parameters:
@@ -59,11 +53,15 @@ paths:
         schema:
           type: string
     get:
+      tags:
+        - Users
       summary: Показати користувача
       responses:
         '200':
           description: Успішно
     patch:
+      tags:
+        - Users
       summary: Оновити користувача
       requestBody:
         required: true
@@ -82,6 +80,8 @@ paths:
         '200':
           description: Успішно
     put:
+      tags:
+        - Users
       summary: Оновити користувача
       requestBody:
         required: true
@@ -100,7 +100,429 @@ paths:
         '200':
           description: Успішно
     delete:
+      tags:
+        - Users
       summary: Видалити користувача
+      responses:
+        '200':
+          description: Успішно
+
+  "/realtors":
+    get:
+      tags:
+        - Realtors
+      summary: Список рієлторів
+      responses:
+        '200':
+          description: Успішно
+    post:
+      tags:
+        - Realtors
+      summary: Створити рієлтора
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                rating:
+                  type: integer
+                contactinfo:
+                  type: string
+      responses:
+        '200':
+          description: Успішно
+
+
+  "/realtors/{id}":
+    parameters:
+      - name: id
+        in: path
+        description: ID рієлтора
+        required: true
+        schema:
+          type: string
+    get:
+      tags:
+        - Realtors
+      summary: Показати рієлтора
+      responses:
+        '200':
+          description: Успішно
+    patch:
+      tags:
+        - Realtors
+      summary: Оновити рієлтора
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                rating:
+                  type: integer
+                contactinfo:
+                  type: string
+      responses:
+        '200':
+          description: Успішно
+    put:
+      tags:
+        - Realtors
+      summary: Оновити рієлтора
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                rating:
+                  type: integer
+                contactinfo:
+                  type: string
+      responses:
+        '200':
+          description: Успішно
+    delete:
+      tags:
+        - Realtors
+      summary: Видалити рієлтора
+      responses:
+        '200':
+          description: Успішно
+
+  "/properties":
+    get:
+      tags:
+        - Properties
+      summary: Список нерухомостей
+      responses:
+        '200':
+          description: Успішно
+    post:
+      tags:
+        - Properties
+      summary: Створити нерухомість
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                property_type:
+                  type: string
+                location:
+                  type: string
+                price:
+                  type: number
+      responses:
+        '200':
+          description: Успішно
+
+  
+  "/properties/{id}":
+    parameters:
+      - name: id
+        in: path
+        description: ID нерухомості
+        required: true
+        schema:
+          type: string
+    get:
+      tags:
+        - Properties
+      summary: Показати нерухомість
+      responses:
+        '200':
+          description: Успішно
+    patch:
+      tags:
+        - Properties
+      summary: Оновити нерухомість
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                property_type:
+                  type: string
+                location:
+                  type: string
+                price:
+                  type: number
+      responses:
+        '200':
+          description: Успішно
+    put:
+      tags:
+        - Properties
+      summary: Оновити нерухомість
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                property_type:
+                  type: string
+                location:
+                  type: string
+                price:
+                  type: number
+      responses:
+        '200':
+          description: Успішно
+    delete:
+      tags:
+        - Properties
+      summary: Видалити нерухомість
+      responses:
+        '200':
+          description: Успішно
+
+  "/contracts":
+    get:
+      tags:
+        - Contracts
+      summary: Список контрактів
+      responses:
+        '200':
+          description: Успішно
+    post:
+      tags:
+        - Contracts
+      summary: Створити контракт
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                property_id:
+                  type: string
+                realtor_id:
+                  type: string
+                details:
+                  type: string
+      responses:
+        '200':
+          description: Успішно
+
+  
+  "/contracts/{id}":
+    parameters:
+      - name: id
+        in: path
+        description: ID контракту
+        required: true
+        schema:
+          type: string
+    get:
+      tags:
+        - Contracts
+      summary: Показати контракт
+      responses:
+        '200':
+          description: Успішно
+    patch:
+      tags:
+        - Contracts
+      summary: Оновити контракт
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                property_id:
+                  type: string
+                realtor_id:
+                  type: string
+                details:
+                  type: string
+      responses:
+        '200':
+          description: Успішно
+    put:
+      tags:
+        - Contracts
+      summary: Оновити контракт
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                property_id:
+                  type: string
+                realtor_id:
+                  type: string
+                details:
+                  type: string
+      responses:
+        '200':
+          description: Успішно
+    delete:
+      tags:
+        - Contracts
+      summary: Видалити контракт
+      responses:
+        '200':
+          description: Успішно
+
+  "/ratings":
+    get:
+      tags:
+        - Ratings
+      summary: Список рейтингів
+      responses:
+        '200':
+          description: Успішно
+    post:
+      tags:
+        - Ratings
+      summary: Створити рейтинг
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                property_id:
+                  type: string
+                realtor_id:
+                  type: string
+                final_rating:
+                  type: integer
+                infrastructure_rating:
+                  type: integer
+                location_to_city_center_rating:
+                  type: integer
+                maintenance_rating:
+                  type: integer
+                neighborhood_rating:
+                  type: integer
+                security_rating:
+                  type: integer
+      responses:
+        '200':
+          description: Успішно
+
+
+  "/ratings/{id}":
+    parameters:
+      - name: id
+        in: path
+        description: ID рейтингу
+        required: true
+        schema:
+          type: string
+    get:
+      tags:
+        - Ratings
+      summary: Показати рейтинг
+      responses:
+        '200':
+          description: Успішно
+    patch:
+      tags:
+        - Ratings
+      summary: Оновити рейтинг
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                property_id:
+                  type: string
+                realtor_id:
+                  type: string
+                final_rating:
+                  type: integer
+                infrastructure_rating:
+                  type: integer
+                location_to_city_center_rating:
+                  type: integer
+                maintenance_rating:
+                  type: integer
+                neighborhood_rating:
+                  type: integer
+                security_rating:
+                  type: integer
+      responses:
+        '200':
+          description: Успішно
+    put:
+      tags:
+        - Ratings
+      summary: Оновити рейтинг
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                property_id:
+                  type: string
+                realtor_id:
+                  type: string
+                final_rating:
+                  type: integer
+                infrastructure_rating:
+                  type: integer
+                location_to_city_center_rating:
+                  type: integer
+                maintenance_rating:
+                  type: integer
+                neighborhood_rating:
+                  type: integer
+                security_rating:
+                  type: integer
+      responses:
+        '200':
+          description: Успішно
+    delete:
+      tags:
+        - Ratings
+      summary: Видалити рейтинг
       responses:
         '200':
           description: Успішно

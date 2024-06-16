@@ -4,7 +4,6 @@ class UsersController < ApiController
   # GET /users
   def index
     @users = User.all
-
     render json: @users
   end
 
@@ -39,6 +38,7 @@ class UsersController < ApiController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
