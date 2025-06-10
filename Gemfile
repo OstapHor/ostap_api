@@ -15,6 +15,7 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 6.0'
   gem 'activeadmin', '~> 3.2.1'
   gem 'sprockets-rails', '~> 3.0', '>= 3.0.4'
+  gem 'jwt'
 end
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

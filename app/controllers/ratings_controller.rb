@@ -1,4 +1,5 @@
 class RatingsController < ApiController
+  before_action :authorize_request, only: %i[create update destroy]
   before_action :set_rating, only: %i[ show update destroy ]
 
   # GET /ratings

@@ -42,8 +42,6 @@ paths:
       responses:
         '200':
           description: Успішно
-
-
   "/users/{id}":
     parameters:
       - name: id

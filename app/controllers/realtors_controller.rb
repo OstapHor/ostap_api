@@ -1,4 +1,5 @@
 class RealtorsController < ApiController
+  before_action :authorize_request, only: %i[create update destroy]
   before_action :set_realtor, only: %i[ show update destroy ]
 
   # GET /realtors

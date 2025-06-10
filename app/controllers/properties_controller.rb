@@ -1,4 +1,5 @@
 class PropertiesController < ApiController
+  before_action :authorize_request, only: %i[create update destroy]
   before_action :set_property, only: %i[ show update destroy ]
 
   # GET /properties
