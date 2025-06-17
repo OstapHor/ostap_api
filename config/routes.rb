@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'authentication/login'
   ActiveAdmin.routes(self)
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'

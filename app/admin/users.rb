@@ -1,4 +1,4 @@
 ActiveAdmin.register User do
-  permit_params :email, :password, :rating
+  permit_params :email, :password_digest, :rating
     
 end
