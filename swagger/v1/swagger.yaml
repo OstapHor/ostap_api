@@ -24,6 +24,35 @@ tags:
   - name: Ratings
     description: Операції з рейтингами
 paths:
+  /login:
+    post:
+      tags:
+      - Auth
+      summary: Увійти в систему
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Успішна авторизація
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+        '401':
+          description: Невірний email або пароль
+
   "/users":
     get:
       tags:
